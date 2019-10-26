@@ -17,15 +17,27 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvPingjia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="平假名：" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvPianjia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="片假名：" />
+
+        <TextView
+            android:id="@+id/tvRoman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="罗马音：" />
+
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Play" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
