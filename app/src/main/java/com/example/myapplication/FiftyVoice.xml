@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FiftyVoice>
+<!--    a row-->
+    <VoiceItem id = "a" category ="vowel" row = "1" column = "1" hiragana="あ" katakana="ア" roman="a"/>
+    <VoiceItem id = "i" category ="vowel" row = "1" column = "2" hiragana="い" katakana="イ" roman="i"/>
+    <VoiceItem id = "u" category ="vowel" row = "1" column = "3" hiragana="う" katakana="ウ" roman="u"/>
+    <VoiceItem id = "e" category ="vowel" row = "1" column = "4" hiragana="え" katakana="エ" roman="e"/>
+    <VoiceItem id = "o" category ="vowel" row = "1" column = "5" hiragana="お" katakana="オ" roman="o"/>
+    <!--    ka row-->
+    <VoiceItem id = "ka" category ="vowel" row = "2" column = "1" hiragana="か" katakana="カ" roman="ka"/>
+    <VoiceItem id = "ki" category ="vowel" row = "2" column = "2" hiragana="き" katakana="キ" roman="ki"/>
+    <VoiceItem id = "ku" category ="vowel" row = "2" column = "3" hiragana="く" katakana="ク" roman="ku"/>
+    <VoiceItem id = "ke" category ="vowel" row = "2" column = "4" hiragana="け" katakana="ケ" roman="ke"/>
+    <VoiceItem id = "ko" category ="vowel" row = "2" column = "5" hiragana="こ" katakana="コ" roman="ko"/>
+</FiftyVoice>

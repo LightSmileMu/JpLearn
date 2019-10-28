@@ -5,8 +5,8 @@ public class VoiceItem {
     private String  category;
     private String row;
     private String  column;
-    private String pingjia;
-    private String  pianjia;
+    private String hiragana;
+    private String katakana;
     private String roman;
 
 
@@ -42,20 +42,20 @@ public class VoiceItem {
         this.column = column;
     }
 
-    public String getPingjia() {
-        return pingjia;
+    public String getHiragana() {
+        return hiragana;
     }
 
-    public void setPingjia(String pingjia) {
-        this.pingjia = pingjia;
+    public void setHiragana(String hiragana) {
+        this.hiragana = hiragana;
     }
 
-    public String getPianjia() {
-        return pianjia;
+    public String getKatakana() {
+        return katakana;
     }
 
-    public void setPianjia(String pianjia) {
-        this.pianjia = pianjia;
+    public void setKatakana(String katakana) {
+        this.katakana = katakana;
     }
 
     public String getRoman() {

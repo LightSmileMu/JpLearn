@@ -12,6 +12,7 @@ import org.xmlpull.v1.XmlPullParser;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvRoman;
     private List<VoiceItem> voiceItemList;
     private int voiceIndex = 0;
+
 
 
     @Override
@@ -51,34 +53,18 @@ public class MainActivity extends AppCompatActivity {
                 voiceIndex++;
             }
         });
-        voiceItemList = new LinkedList<VoiceItem>();
-        VoiceItem item1 = new VoiceItem();
-        item1.setPingjia("あ");
-        item1.setPianjia("ア");
-        item1.setRoman("a");
-        voiceItemList.add(item1);
-
-        VoiceItem item2 = new VoiceItem();
-        item2.setPingjia("い");
-        item2.setPianjia("イ");
-        item2.setRoman("i");
-        voiceItemList.add(item2);
-
-        VoiceItem item3 = new VoiceItem();
-        item3.setPingjia("う");
-        item3.setPianjia("ウ");
-        item3.setRoman("u");
-        voiceItemList.add(item3);
+        voiceItemList = loadXml("/storage/sdcard0/data/FiftyVoice.xml");
     }
     private void setContent(VoiceItem item)
     {
-        tvPingjia.setText("平假名："+item.getPingjia());
-        tvPianjia.setText("假片名："+item.getPianjia());
+        tvPingjia.setText("平假名："+item.getHiragana());
+        tvPianjia.setText("假片名："+item.getKatakana());
         tvRoman.setText("罗马音："+item.getRoman());
     }
 
-    private void loadXml(String file)
+    private List<VoiceItem> loadXml(String file)
     {
+        List<VoiceItem> items = new ArrayList<VoiceItem>();
         try {
             File path = new File(file);
             FileInputStream fis = new FileInputStream(path);
@@ -96,18 +82,18 @@ public class MainActivity extends AppCompatActivity {
             String age = null;
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tagName = parser.getName(); // 获得当前节点的名称
-
+                VoiceItem item = new VoiceItem();
                 switch (eventType) {
                     case XmlPullParser.START_TAG: // 当前等于开始节点 <person>
-                        if ("persons".equals(tagName)) { // <persons>
-                        } else if ("person".equals(tagName)) { // <person id="1">
-                            id = parser.getAttributeValue(null, "id");
-                        } else if ("name".equals(tagName)) { // <name>
-                            name = parser.nextText();
-                        }else if ("gender".equals(tagName)) { // <age>
-                            gender = parser.nextText();
-                        } else if ("age".equals(tagName)) { // <age>
-                            age = parser.nextText();
+                        if ("VoiceItem".equals(tagName)) { // <person id="1">
+                            item.setId( parser.getAttributeValue(null, "id"));
+                            item.setKatakana( parser.getAttributeValue(null, "katakana"));
+                            item.setHiragana( parser.getAttributeValue(null, "hiragana"));
+                            item.setRoman( parser.getAttributeValue(null, "roman"));
+                            item.setRow( parser.getAttributeValue(null, "row"));
+                            item.setColumn( parser.getAttributeValue(null, "column"));
+                            item.setCategory( parser.getAttributeValue(null, "category"));
+                            items.add(item);
                         }
                         break;
                     case XmlPullParser.END_TAG: // </persons>
@@ -128,5 +114,6 @@ public class MainActivity extends AppCompatActivity {
         }finally{
 
         }
+        return items;
     }
 }
