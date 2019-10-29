@@ -1,19 +1,19 @@
 package com.example.myapplication;
 
+import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.xmlpull.v1.XmlPullParser;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvRoman;
     private List<VoiceItem> voiceItemList;
     private int voiceIndex = 0;
+    private boolean isPlay = false;
+    private static int delay = 0;  //1s
+    private static int period = 1000;  //1s
+    private static final int Update_View = 0;
+    private Timer mTimer = null;
+    private TimerTask mTimerTask = null;
+    private Handler mHandler = null;
 
 
 
@@ -35,25 +42,47 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews()
     {
-        Button btnPlay = this.findViewById(R.id.btnPlay);
+        final Button btnPlay = this.findViewById(R.id.btnPlay);
         tvPingjia = this.findViewById(R.id.tvPingjia);
         tvPianjia = this.findViewById(R.id.tvPianjia);
         tvRoman = this.findViewById(R.id.tvRoman);
+        btnPlay.setBackgroundResource(R.mipmap.play);
         btnPlay.setOnClickListener(new View.OnClickListener(){
             int i = 0;
             public void onClick(View v) {
-                if(voiceIndex < 0){
-                    voiceIndex = 0;
+                if(!isPlay) {
+                    startTimer();
+                    btnPlay.setBackgroundResource(R.mipmap.pause);
                 }
-
-                if(voiceIndex > voiceItemList.size() -1){
-                    voiceIndex = 0;
+                else{
+                    stopTimer();
+                    btnPlay.setBackgroundResource(R.mipmap.play);
                 }
-                setContent(voiceItemList.get(voiceIndex));
-                voiceIndex++;
+                isPlay = !isPlay;
             }
         });
-        voiceItemList = loadXml("/storage/sdcard0/data/FiftyVoice.xml");
+
+        mHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case Update_View:
+                        if(voiceIndex < 0){
+                            voiceIndex = 0;
+                        }
+                        if(voiceIndex > voiceItemList.size() -1){
+                            voiceIndex = 0;
+                        }
+                        setContent(voiceItemList.get(voiceIndex));
+                        voiceIndex++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        voiceItemList = loadXml("/storage/sdcard0/data/fifty_voice.raw");
     }
     private void setContent(VoiceItem item)
     {
@@ -67,8 +96,9 @@ public class MainActivity extends AppCompatActivity {
         List<VoiceItem> items = new ArrayList<VoiceItem>();
         try {
             File path = new File(file);
-            FileInputStream fis = new FileInputStream(path);
 
+            //FileInputStream fis = new FileInputStream(path);
+            InputStream fis = this.getResources().openRawResource(R.raw.fifty_voice);
             // 获得pull解析器对象
             XmlPullParser parser = Xml.newPullParser();
             // 指定解析的文件和编码格式
@@ -85,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 VoiceItem item = new VoiceItem();
                 switch (eventType) {
                     case XmlPullParser.START_TAG: // 当前等于开始节点 <person>
-                        if ("VoiceItem".equals(tagName)) { // <person id="1">
+                        if ("VoiceItem".equals(tagName)) {
                             item.setId( parser.getAttributeValue(null, "id"));
                             item.setKatakana( parser.getAttributeValue(null, "katakana"));
                             item.setHiragana( parser.getAttributeValue(null, "hiragana"));
@@ -97,12 +127,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case XmlPullParser.END_TAG: // </persons>
-                        if ("person".equals(tagName)) {
-//                            Log.i(TAG, "id---" + id);
-//                            Log.i(TAG, "name---" + name);
-//                            Log.i(TAG, "gender---" + gender);
-//                            Log.i(TAG, "age---" + age);
-                        }
                         break;
                     default:
                         break;
@@ -115,5 +139,48 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return items;
+    }
+
+    private void startTimer(){
+        if (mTimer == null) {
+            mTimer = new Timer();
+        }
+
+        if (mTimerTask == null) {
+            mTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    sendMessage(Update_View);
+//                    do {
+//                        try {
+//                            Thread.sleep(1000);
+//                        } catch (InterruptedException e) {
+//                        }
+//                    } while (isPlay);
+                }
+            };
+        }
+
+        if(mTimer != null && mTimerTask != null )
+            mTimer.schedule(mTimerTask, delay, period);
+
+    }
+
+    private void stopTimer(){
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
+        if (mTimerTask != null) {
+            mTimerTask.cancel();
+            mTimerTask = null;
+        }
+    }
+
+    public void sendMessage(int id){
+        if (mHandler != null) {
+            Message message = Message.obtain(mHandler, id);
+            mHandler.sendMessage(message);
+        }
     }
 }
