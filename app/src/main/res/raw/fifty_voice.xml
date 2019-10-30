@@ -21,7 +21,7 @@
   <!-- ta row -->
   <VoiceItem id = "ta" category ="vowel" row = "4" column = "1" hiragana="た" katakana="タ" roman="ta"/>
   <VoiceItem id = "chi" category ="vowel" row = "4" column = "2" hiragana="ち" katakana="チ" roman="chi"/>
-  <VoiceItem id = "tu" category ="vowel" row = "4" column = "3" hiragana="つ" katakana="ツ" roman="tu"/>
+  <VoiceItem id = "tsu" category ="vowel" row = "4" column = "3" hiragana="つ" katakana="ツ" roman="tsu"/>
   <VoiceItem id = "te" category ="vowel" row = "4" column = "4" hiragana="て" katakana="テ" roman="te"/>
   <VoiceItem id = "to" category ="vowel" row = "4" column = "5" hiragana="と" katakana="ト" roman="to"/>
   <!-- na row -->

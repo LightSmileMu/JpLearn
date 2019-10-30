@@ -3,6 +3,8 @@ package com.example.myapplication;
 import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,12 +26,13 @@ public class MainActivity extends AppCompatActivity {
     private List<VoiceItem> voiceItemList;
     private int voiceIndex = 0;
     private boolean isPlay = false;
-    private static int delay = 0;  //1s
-    private static int period = 1000;  //1s
+    private static int delay = 0;
+    private static int period = 2000;  //2s
     private static final int Update_View = 0;
     private Timer mTimer = null;
     private TimerTask mTimerTask = null;
     private Handler mHandler = null;
+    private MediaPlayer player = null;
 
 
 
@@ -61,6 +64,25 @@ public class MainActivity extends AppCompatActivity {
                 isPlay = !isPlay;
             }
         });
+        final Button btnVoice = this.findViewById(R.id.btnVoice);
+        btnVoice.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v) {
+                int currentIndex = -1;
+                for(int i = 0;i<voiceItemList.size();i++)
+                {
+                    if(("罗马音："+voiceItemList.get(i).getRoman()).equals(tvRoman.getText()) )
+                    {
+                        currentIndex = i;
+                        break;
+                    }
+                }
+                if(currentIndex >= 0)
+                {
+                    PlayVoice(voiceItemList.get(currentIndex));
+                }
+            }
+        });
 
         mHandler = new Handler(){
             @Override
@@ -87,8 +109,22 @@ public class MainActivity extends AppCompatActivity {
     private void setContent(VoiceItem item)
     {
         tvPingjia.setText("平假名："+item.getHiragana());
-        tvPianjia.setText("假片名："+item.getKatakana());
+        tvPianjia.setText("片假名："+item.getKatakana());
         tvRoman.setText("罗马音："+item.getRoman());
+        PlayVoice(item);
+    }
+
+    private void PlayVoice(VoiceItem item)
+    {
+        if(item != null){
+            Uri uri = Uri.parse("android.resource://com.example.myapplication/raw/"+ item.getRoman());
+            if(uri != null && tvRoman.getText().length() > 0)
+            {
+                player = MediaPlayer.create(this,uri);
+                player.start();
+                player = null;
+            }
+        }
     }
 
     private List<VoiceItem> loadXml(String file)
@@ -151,12 +187,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     sendMessage(Update_View);
-//                    do {
-//                        try {
-//                            Thread.sleep(1000);
-//                        } catch (InterruptedException e) {
-//                        }
-//                    } while (isPlay);
                 }
             };
         }

@@ -16,6 +16,7 @@
             android:id="@+id/tvPingjia"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:gravity="center|start"
             android:text="平假名："
             android:textSize="24sp" />
 
@@ -23,22 +24,53 @@
             android:id="@+id/tvPianjia"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_gravity="center|start"
+            android:gravity="center|start"
             android:text="片假名："
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/tvRoman"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="罗马音："
-            android:textSize="24sp" />
+            tools:ignore="MissingConstraints">
 
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="32pt"
-            android:layout_height="32pt"
-            android:layout_gravity="center"
-            android:background="@android:drawable/ic_media_play"
-            android:gravity="bottom" />
+            <TextView
+                android:id="@+id/tvRoman"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:width="140pt"
+                android:gravity="center|start"
+                android:text="罗马音："
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btnVoice"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center|end"
+                android:background="@mipmap/speaker"
+                android:gravity="center|right"
+                android:paddingBottom="0pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="32pt"
+                android:layout_height="32pt"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15pt"
+                android:background="@android:drawable/ic_media_play"
+                android:gravity="bottom"
+                android:paddingBottom="0pt" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
