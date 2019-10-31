@@ -57,4 +57,10 @@
   <VoiceItem id = "w-o" category ="vowel" row = "10" column = "5" hiragana="を" katakana="ヲ" roman="o"/>
   <!-- n row -->
   <VoiceItem id = "n" category ="vowel" row = "11" column = "1" hiragana="ん" katakana="ン" roman="n"/>
+  <!-- ga row -->
+  <VoiceItem id = "ga" category ="vocal" row = "1" column = "1" hiragana="が" katakana="ガ" roman="ga"/>
+  <VoiceItem id = "gi" category ="vocal" row = "2" column = "2" hiragana="ぎ" katakana="ギ" roman="gi"/>
+  <VoiceItem id = "gu" category ="vocal" row = "3" column = "3" hiragana="ぐ" katakana="グ" roman="gu"/>
+  <VoiceItem id = "ge" category ="vocal" row = "4" column = "4" hiragana="げ" katakana="ゲ" roman="ge"/>
+  <VoiceItem id = "go" category ="vocal" row = "5" column = "5" hiragana="ご" katakana="ゴ" roman="go"/>
 </FiftyVoice>
