@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/right"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvPingjia1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|start"
+        android:text="平假名："
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvPianjia1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center|start"
+        android:gravity="center|start"
+        android:text="片假名："
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/tvRoman1"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:width="140pt"
+            android:gravity="center|start"
+            android:text="罗马音："
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnVoice1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|end"
+            android:background="@mipmap/speaker"
+            android:gravity="center|right"
+            android:paddingBottom="0pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btnPlay1"
+            android:layout_width="32pt"
+            android:layout_height="32pt"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15pt"
+            android:background="@android:drawable/ic_media_play"
+            android:gravity="bottom"
+            android:paddingBottom="0pt" />
+
+    </LinearLayout>
+</LinearLayout>

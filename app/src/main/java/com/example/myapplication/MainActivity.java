@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Xml;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TabHost;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import org.xmlpull.v1.XmlPullParser;
@@ -45,10 +47,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews()
     {
+        TabHost tabHost = (TabHost) this.findViewById(android.R.id.tabhost);
+        tabHost.setup();
+        LayoutInflater inflater = LayoutInflater.from(this);
+        inflater.inflate(R.layout.voice_view,tabHost.getTabContentView());
+        inflater.inflate(R.layout.voice_exprise,tabHost.getTabContentView());
+        tabHost.addTab(tabHost.newTabSpec("voice_view").setIndicator("观看").setContent(R.id.left));
+        tabHost.addTab(tabHost.newTabSpec("voice_exprise").setIndicator("练习").setContent(R.id.right));
+
         final Button btnPlay = this.findViewById(R.id.btnPlay);
         tvPingjia = this.findViewById(R.id.tvPingjia);
         tvPianjia = this.findViewById(R.id.tvPianjia);
         tvRoman = this.findViewById(R.id.tvRoman);
+
+
         btnPlay.setBackgroundResource(R.mipmap.play);
         btnPlay.setOnClickListener(new View.OnClickListener(){
             int i = 0;
@@ -120,9 +132,12 @@ public class MainActivity extends AppCompatActivity {
             Uri uri = Uri.parse("android.resource://com.example.myapplication/raw/"+ item.getRoman());
             if(uri != null && tvRoman.getText().length() > 0)
             {
-                player = MediaPlayer.create(this,uri);
-                player.start();
-                player = null;
+
+                if(player == null || !player.isPlaying())
+                {
+                    player = MediaPlayer.create(this,uri);
+                    player.start();
+                }
             }
         }
     }
