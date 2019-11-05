@@ -23,22 +23,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tvRoman"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:width="140pt"
             android:gravity="center|start"
             android:text="罗马音："
             android:textSize="24sp" />
 
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:visibility="invisible" />
         <Button
             android:id="@+id/btnVoice"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center|end"
+            android:layout_marginRight="5pt"
             android:background="@mipmap/speaker"
             android:gravity="center|right"
             android:paddingBottom="0pt" />
@@ -53,11 +63,11 @@
 
         <Button
             android:id="@+id/btnPlay"
-            android:layout_width="32pt"
-            android:layout_height="32pt"
+            android:layout_width="28pt"
+            android:layout_height="28pt"
             android:layout_gravity="center"
             android:layout_marginBottom="15pt"
-            android:background="@android:drawable/ic_media_play"
+            android:background="@mipmap/play"
             android:gravity="bottom"
             android:paddingBottom="0pt" />
 

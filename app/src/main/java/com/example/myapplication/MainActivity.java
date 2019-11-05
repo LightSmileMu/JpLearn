@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         initViews();
     }
 
+    @SuppressLint("HandlerLeak")
     private void initViews()
     {
         TabHost tabHost = (TabHost) this.findViewById(android.R.id.tabhost);
@@ -52,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         inflater.inflate(R.layout.voice_view,tabHost.getTabContentView());
         inflater.inflate(R.layout.voice_exprise,tabHost.getTabContentView());
-        tabHost.addTab(tabHost.newTabSpec("voice_view").setIndicator("观看").setContent(R.id.left));
+        tabHost.addTab(tabHost.newTabSpec("voice_view").setIndicator("学习").setContent(R.id.left));
         tabHost.addTab(tabHost.newTabSpec("voice_exprise").setIndicator("练习").setContent(R.id.right));
 
+        player = new MediaPlayer();
         final Button btnPlay = this.findViewById(R.id.btnPlay);
         tvPingjia = this.findViewById(R.id.tvPingjia);
         tvPianjia = this.findViewById(R.id.tvPianjia);
@@ -118,27 +123,28 @@ public class MainActivity extends AppCompatActivity {
 
         voiceItemList = loadXml("/storage/sdcard0/data/fifty_voice.raw");
     }
-    private void setContent(VoiceItem item)
-    {
+    private void setContent(VoiceItem item) {
         tvPingjia.setText("平假名："+item.getHiragana());
         tvPianjia.setText("片假名："+item.getKatakana());
         tvRoman.setText("罗马音："+item.getRoman());
         PlayVoice(item);
     }
 
-    private void PlayVoice(VoiceItem item)
-    {
-        if(item != null){
-            Uri uri = Uri.parse("android.resource://com.example.myapplication/raw/"+ item.getRoman());
-            if(uri != null && tvRoman.getText().length() > 0)
-            {
+    private void PlayVoice(VoiceItem item) {
+        try{
+            if(item != null){
+                Uri uri = Uri.parse("android.resource://com.example.myapplication/raw/"+ item.getRoman());
 
-                if(player == null || !player.isPlaying())
+                if(uri != null && tvRoman.getText().length() > 0)
                 {
-                    player = MediaPlayer.create(this,uri);
+                    player.reset();
+                    player.setDataSource(this,uri);
+                    player.prepare();
                     player.start();
                 }
             }
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
