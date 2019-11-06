@@ -10,25 +10,26 @@
         android:orientation="horizontal">
 
         <RadioGroup
+            android:id="@+id/rg_exprise_mode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checkedButton="@id/radioButton1"
+            android:checkedButton="@id/rb_exprise_kana"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton1"
+                android:id="@+id/rb_exprise_kana"
                 android:layout_width="wrap_content"
                 android:layout_height="25pt"
                 android:text="假名练习" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/rb_exprise_roman"
                 android:layout_width="wrap_content"
                 android:layout_height="25pt"
                 android:text="罗马音练习" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/rb_exprise_kanaAndRoman"
                 android:layout_width="wrap_content"
                 android:layout_height="25pt"
                 android:text="假名+罗马音练习" />
@@ -53,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,7 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -100,7 +103,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/btn_exprise_voice"
@@ -121,19 +125,19 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btnPlay1"
+            android:id="@+id/btn_exprise_prev"
             android:layout_width="28pt"
             android:layout_height="28pt"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5pt"
+            android:layout_marginBottom="6pt"
             android:background="@mipmap/prev"
             android:gravity="bottom"
             android:paddingBottom="0pt" />
 
         <Button
-            android:id="@+id/btnPlay3"
-            android:layout_width="28pt"
-            android:layout_height="28pt"
+            android:id="@+id/btn_exprise_check"
+            android:layout_width="32pt"
+            android:layout_height="32pt"
             android:layout_gravity="bottom"
             android:layout_marginBottom="5pt"
             android:background="@mipmap/check"
@@ -141,13 +145,14 @@
             android:paddingBottom="0pt" />
 
         <Button
-            android:id="@+id/btnPlay2"
+            android:id="@+id/btn_exprise_next"
             android:layout_width="28pt"
             android:layout_height="28pt"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5pt"
+            android:layout_marginBottom="6pt"
             android:background="@mipmap/next"
             android:gravity="bottom"
+            android:paddingLeft="0pt"
             android:paddingBottom="0pt" />
 
     </LinearLayout>

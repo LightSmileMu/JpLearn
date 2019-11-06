@@ -47,11 +47,11 @@
   <VoiceItem id = "yu" category ="vowel" row = "8" column = "3" hiragana="ゆ" katakana="ユ" roman="yu"/>
   <VoiceItem id = "yo" category ="vowel" row = "8" column = "5" hiragana="よ" katakana="ヨ" roman="yo"/>
   <!-- la row -->
-  <VoiceItem id = "la" category ="vowel" row = "9" column = "1" hiragana="ら" katakana="ラ" roman="la"/>
-  <VoiceItem id = "li" category ="vowel" row = "9" column = "2" hiragana="り" katakana="リ" roman="li"/>
-  <VoiceItem id = "lu" category ="vowel" row = "9" column = "3" hiragana="る" katakana="ル" roman="lu"/>
-  <VoiceItem id = "le" category ="vowel" row = "9" column = "4" hiragana="れ" katakana="レ" roman="le"/>
-  <VoiceItem id = "lo" category ="vowel" row = "9" column = "5" hiragana="ろ" katakana="ロ" roman="lo"/>
+  <VoiceItem id = "ra" category ="vowel" row = "9" column = "1" hiragana="ら" katakana="ラ" roman="ra"/>
+  <VoiceItem id = "ri" category ="vowel" row = "9" column = "2" hiragana="り" katakana="リ" roman="ri"/>
+  <VoiceItem id = "ru" category ="vowel" row = "9" column = "3" hiragana="る" katakana="ル" roman="ru"/>
+  <VoiceItem id = "re" category ="vowel" row = "9" column = "4" hiragana="れ" katakana="レ" roman="re"/>
+  <VoiceItem id = "ro" category ="vowel" row = "9" column = "5" hiragana="ろ" katakana="ロ" roman="ro"/>
   <!-- wa row -->
   <VoiceItem id = "wa" category ="vowel" row = "10" column = "1" hiragana="わ" katakana="ワ" roman="wa"/>
   <VoiceItem id = "w-o" category ="vowel" row = "10" column = "5" hiragana="を" katakana="ヲ" roman="o"/>

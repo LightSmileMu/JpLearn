@@ -43,10 +43,11 @@
             android:inputType="textPersonName"
             android:text="Name"
             android:visibility="invisible" />
+
         <Button
             android:id="@+id/btnVoice"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="center|end"
             android:layout_marginRight="5pt"
             android:background="@mipmap/speaker"
@@ -59,17 +60,16 @@
         android:layout_height="0dip"
         android:layout_weight="1"
         android:gravity="center|bottom"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/btnPlay"
             android:layout_width="28pt"
             android:layout_height="28pt"
-            android:layout_gravity="center"
-            android:layout_marginBottom="15pt"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5pt"
             android:background="@mipmap/play"
             android:gravity="bottom"
             android:paddingBottom="0pt" />
-
     </LinearLayout>
 </LinearLayout>
