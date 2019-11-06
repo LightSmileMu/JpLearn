@@ -63,4 +63,28 @@
   <VoiceItem id = "gu" category ="vocal" row = "3" column = "3" hiragana="ぐ" katakana="グ" roman="gu"/>
   <VoiceItem id = "ge" category ="vocal" row = "4" column = "4" hiragana="げ" katakana="ゲ" roman="ge"/>
   <VoiceItem id = "go" category ="vocal" row = "5" column = "5" hiragana="ご" katakana="ゴ" roman="go"/>
+  <!-- za row -->
+  <VoiceItem id = "za" category ="vocal" row = "1" column = "1" hiragana="ざ" katakana="ザ" roman="za"/>
+  <VoiceItem id = "zi" category ="vocal" row = "2" column = "2" hiragana="じ" katakana="ジ" roman="zi"/>
+  <VoiceItem id = "zu" category ="vocal" row = "3" column = "3" hiragana="ず" katakana="ズ" roman="zu"/>
+  <VoiceItem id = "ze" category ="vocal" row = "4" column = "4" hiragana="ぜ" katakana="ゼ" roman="ze"/>
+  <VoiceItem id = "zo" category ="vocal" row = "5" column = "5" hiragana="ぞ" katakana="ゾ" roman="zo"/>
+  <!-- da row -->
+  <VoiceItem id = "da" category ="vocal" row = "1" column = "1" hiragana="だ" katakana="ダ" roman="da"/>
+  <VoiceItem id = "di" category ="vocal" row = "2" column = "2" hiragana="ぢ" katakana="ヂ" roman="di"/>
+  <VoiceItem id = "du" category ="vocal" row = "3" column = "3" hiragana="づ" katakana="ヅ" roman="du"/>
+  <VoiceItem id = "de" category ="vocal" row = "4" column = "4" hiragana="で" katakana="デ" roman="de"/>
+  <VoiceItem id = "do" category ="vocal" row = "5" column = "5" hiragana="ど" katakana="ド" roman="do"/>
+  <!-- ba row -->
+  <VoiceItem id = "ba" category ="vocal" row = "1" column = "1" hiragana="ば" katakana="バ" roman="ba"/>
+  <VoiceItem id = "bi" category ="vocal" row = "2" column = "2" hiragana="び" katakana="ビ" roman="bi"/>
+  <VoiceItem id = "bu" category ="vocal" row = "3" column = "3" hiragana="ぶ" katakana="ブ" roman="bu"/>
+  <VoiceItem id = "be" category ="vocal" row = "4" column = "4" hiragana="べ" katakana="ベ" roman="be"/>
+  <VoiceItem id = "bo" category ="vocal" row = "5" column = "5" hiragana="ぼ" katakana="ボ" roman="bo"/>
+  <!-- pa row -->
+  <VoiceItem id = "pa" category ="vocal" row = "1" column = "1" hiragana="ぱ" katakana="パ" roman="pa"/>
+  <VoiceItem id = "pi" category ="vocal" row = "2" column = "2" hiragana="ぴ" katakana="ピ" roman="pi"/>
+  <VoiceItem id = "pu" category ="vocal" row = "3" column = "3" hiragana="ぷ" katakana="プ" roman="pu"/>
+  <VoiceItem id = "pe" category ="vocal" row = "4" column = "4" hiragana="ぺ" katakana="ペ" roman="pe"/>
+  <VoiceItem id = "po" category ="vocal" row = "5" column = "5" hiragana="ぽ" katakana="ポ" roman="po"/>
 </FiftyVoice>
