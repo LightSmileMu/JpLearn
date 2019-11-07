@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 expriseVoiceIndex=expriseVoiceIndex+1;
-                if(expriseVoiceIndex > voiceItemList.size()){
+                if(expriseVoiceIndex >= voiceItemList.size()){
                     expriseVoiceIndex = 0;
                 }
                 setExproseViewContent(voiceItemList.get(expriseVoiceIndex),true);
